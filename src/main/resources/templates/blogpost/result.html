@@ -3,6 +3,7 @@
 <head>
     <title>Blog Site</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:replace="/fragments/styles :: head-styles" />
 </head>
 <body>
 <h3>Blog Post Form</h3>
@@ -11,5 +12,7 @@
 <p th:text="${title}" />
 <p th:text="${author}" />
 <p th:text="${blogEntry}" />
+
+<div th:replace="/fragments/styles :: scripts"></div>
 </body>
 </html>

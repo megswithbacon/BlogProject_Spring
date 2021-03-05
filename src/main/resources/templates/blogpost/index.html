@@ -4,36 +4,40 @@
     <title>Blog Site</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link th:replace="/fragments/styles :: head-styles"/>
+    <link href="css/standard.css" rel="stylesheet">
 </head>
 
 <body>
+<div th:replace="fragments/navbar :: navbar" ></div>
 <div class="container">
-    <h1>Welcome to Our Blog Post Site!</h1>
-    <h3>Check out our blogs!</h3>
-    <a th:href="@{/blogposts/new}">
-        <button class="btn btn-primary">Submit a New Blog Post</button>
-    </a>
+    <h1>Welcome to this Blog Post Site!</h1>
+
     <div class="row">
         <div th:each="blog:${posts}">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <p th:text="${blog.title}"/>
+                        <h2 th:text="${blog.title}"></h2>
                     </div>
                     <div class="panel-body">
-                        <p th:text="${blog.author}"/>
-                        <p th:text="${blog.blogEntry}"/>
+                        <strong><p th:text="${blog.author}"/></strong>
+                        <p th:text="${blog.blogEntry}" />
                     </div>
                     <div class="panel-footer">
                         <!-- Link to Update -->
                         <!-- Link to Show  -->
-                        <!--  Link to Destroy -->
+                        <form action="#" th:action="@{'/blogposts/{id}'(id=${blog.id})}" th:method="delete"
+                              class="form-horizontal">
+                            <div class="form-group">
+                                <input type="hidden" name="_method" value="delete"/>
+                                <button type="submit" class="btn btn-danger btn-block" th:text="Delete">Delete</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 <div th:replace="/fragments/styles :: scripts"></div>
 </body>

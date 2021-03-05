@@ -13,6 +13,9 @@
 <p th:text="${author}" />
 <p th:text="${blogEntry}" />
 
+<a th:href="@{/}"><button class="btn btn-success">Back To Home Page</button></a>
+<a th:href="@{/blog_posts/new}"><button class= "btn btn-primary">Submit a New Blog Post</button></a>
+
 <div th:replace="/fragments/styles :: scripts"></div>
 </body>
 </html>
